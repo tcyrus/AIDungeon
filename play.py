@@ -32,21 +32,12 @@ def splash():
 
 def random_story(story_data):
     # random setting
-    settings = story_data["settings"].keys()
-    n_settings = len(settings)
-    n_settings = 2
-    rand_n = random.randint(0, n_settings - 1)
-    for i, setting in enumerate(settings):
-        if i == rand_n:
-            setting_key = setting
+    settings = list(story_data["settings"].keys())
+    setting_key = random.choice(settings)
 
     # random character
     characters = story_data["settings"][setting_key]["characters"]
-    n_characters = len(characters)
-    rand_n = random.randint(0, n_characters - 1)
-    for i, character in enumerate(characters):
-        if i == rand_n:
-            character_key = character
+    character_key = random.choice(characters)
 
     # random name
     name = grammars.direct(setting_key, "character_name")
